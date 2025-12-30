@@ -85,7 +85,7 @@ module case_top() {
         ];
         
         for (l = [0 : 7]) {
-            translate([9, 90-7.5-l*10, 0])
+            translate([11, 90-7.5-l*10, 0])
                 line(lines[l]);
         }
     }
@@ -144,8 +144,8 @@ module mounting_hole(left = true) {
 module line(
     s,
     cell = [8.5, 6],
-    spacing = 2,          // new spacing between letters
-    font = "Stencil Gothic"
+    spacing = 1.5,          // new spacing between letters
+    font = "ArialStencila"
 ) {
     base_size = 15;   // tuned for Allerta Stencil
     scale_factor = min(
