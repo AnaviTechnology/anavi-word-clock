@@ -2,6 +2,42 @@
 
 Open source 8x8 NeoPixel word clock.
 
+# Case
+
+The case is designed using the free and open-source tool OpenSCAD and requires a custom stencil font.
+
+## Installing the Stencil Font on Ubuntu
+
+Follow the steps below to install the Arial stencil font on an Ubuntu Linux distribution:
+
+*  Copy the font file:
+
+```
+sudo mkdir /usr/share/fonts/anavi
+sudo cp Arial-BoldStencila.ttf /usr/share/fonts/anavi
+sudo chmod -R --reference=/usr/share/fonts/opentype /usr/share/fonts/anavi
+```
+
+NOTE: Root privileges are required to install fonts system-wide.
+
+* Update the font cache:
+
+```
+sudo fc-cache -fv
+```
+
+* Verify the installation:
+
+```
+fc-list | grep -i arial
+```
+
+The font should appear in the output list. The font name reported by fc-list must be used exactly in the OpenSCAD text() function.
+
+* Launch OpenSCAD
+
+Restart OpenSCAD if it was already running so it can detect the newly installed font.
+
 # License
 
 The project is released under the [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
