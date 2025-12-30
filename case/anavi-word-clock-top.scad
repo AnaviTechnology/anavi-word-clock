@@ -29,6 +29,9 @@ usbc_h = 5;
 // LED
 led_r = 5;
 
+// Grid
+grid_height = outer_h+case_height;
+
 // increase for smoother cone ($fn)
 segments = 64;
 
@@ -49,6 +52,8 @@ module case_top() {
                              case_lenght,
                              corner_r);
             
+            // Mounting holes
+
             // Bottom left
             translate([2, 2+outer_r*2, 0])
                 rotate([180, 0, 0])
@@ -70,8 +75,12 @@ module case_top() {
                     mounting_hole_round();
         }
         
+        // Field for the letters
+
         translate([10, 10, 0])
-            cube([80, 80, 1]);
+            cube([80, 80, case_height-1]);
+
+        // Letters
         
         lines = [
                 "ATWENTYD", 
@@ -169,8 +178,37 @@ module line(
     }
 }
 
+module grid(cells = [8.5, 8.5], spacing = 1.5, wall = 0.5, height = grid_height) {
+    rows = 8;
+    cols = 8;
+
+    // Vertical walls
+    for (i = [0:cols]) {
+        translate([
+            i * (cells[0] + spacing) - spacing/2 - wall/2,
+            -spacing/2,
+            0
+        ])
+            cube([wall, rows * (cells[1] + spacing), height]);
+    }
+
+    // Horizontal walls
+    for (j = [0:rows]) {
+        translate([
+            -2*wall,
+            j * (cells[1] + spacing) - spacing/2 - wall/2,
+            0
+        ])
+            cube([cols * (cells[0] + spacing)+wall, wall, height]);
+    }
+}
+
 // ========================
 // Top case
 // ========================
 
-case_top();
+union() {
+    case_top();
+    translate([11, 11, -grid_height+case_height])
+        grid();
+}
