@@ -10,8 +10,8 @@ $fn = 64;
 
 
 // Case (2 mm shorter than the bottom, aka 1 mm on each side)
-case_width = 100;
-case_lenght = 100;
+case_width = 98;
+case_lenght = 98;
 case_height = 2.5;
 
 // Outer cylinder
@@ -77,7 +77,7 @@ module case_top() {
         
         // Field for the letters
 
-        translate([10, 10, 0])
+        translate([9, 9, 0])
             cube([80, 80, case_height-1]);
 
         // Letters
@@ -94,7 +94,7 @@ module case_top() {
         ];
         
         for (l = [0 : 7]) {
-            translate([11, 90-7.5-l*10, 0])
+            translate([10, 89-7.5-l*10, 0])
                 line(lines[l]);
         }
     }
@@ -209,6 +209,6 @@ module grid(cells = [8.5, 8.5], spacing = 1.5, wall = 0.5, height = grid_height)
 
 union() {
     case_top();
-    translate([11, 11, -grid_height+case_height])
+    translate([10, 10, -grid_height+case_height])
         grid();
 }
