@@ -30,7 +30,7 @@ usbc_h = 5;
 led_r = 5;
 
 // Grid
-grid_height = outer_h+case_height;
+grid_height = 4+case_height;
 
 // increase for smoother cone ($fn)
 segments = 64;
@@ -94,7 +94,7 @@ module case_top() {
         ];
         
         for (l = [0 : 7]) {
-            translate([10, 89-7.5-l*10, 0])
+            translate([10, case_lenght-9.5-7.5-l*10, 0])
                 line(lines[l]);
         }
     }
@@ -209,6 +209,6 @@ module grid(cells = [8.5, 8.5], spacing = 1.5, wall = 0.5, height = grid_height)
 
 union() {
     case_top();
-    translate([10, 10, -grid_height+case_height])
+    translate([9.5, 9.5, -grid_height+case_height])
         grid();
 }
