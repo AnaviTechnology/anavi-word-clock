@@ -64,6 +64,16 @@ module case_top() {
                 rotate([180, 0, 0])
                     mounting_hole_round();
             
+            // Middle left
+            translate([2, outer_r+case_width/2, 0])
+                rotate([180, 0, 0])
+                    mounting_hole_round();
+
+            // Middle right
+            translate([case_width-2*outer_r-2, outer_r+case_width/2, 0])
+                rotate([180, 0, 0])
+                    mounting_hole_round();
+
             // Top left
             translate([2, case_lenght-2*outer_r-3+outer_r*2, 0])
                 rotate([180, 0, 0])
@@ -77,8 +87,8 @@ module case_top() {
         
         // Field for the letters
 
-        translate([9, 9, 0])
-            cube([80, 80, case_height-1]);
+        translate([8.5, 8.5, -outer_h])
+            cube([81, 81, outer_h+case_height-1]);
 
         // Letters
         
