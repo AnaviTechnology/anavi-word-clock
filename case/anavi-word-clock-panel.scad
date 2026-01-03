@@ -4,7 +4,7 @@
 
 // Case (2 mm shorter than the bottom, aka 1 mm on each side)
 case_width = 98;
-case_height = 2;
+case_height = 3;
 
 // Outer cylinder
 outer_r = 4;
@@ -26,8 +26,8 @@ $fn = segments;
 module panel_cover() {
     difference() {
 
-        translate([8, 8, 0])
-            cube([82, 82, case_height]);
+        translate([8.5, 8.5, 0])
+            cube([81, 81, case_height]);
 
         // Bezel to hold the NeoPixel panel
 
@@ -36,8 +36,8 @@ module panel_cover() {
 
         // Field for the NeoPixel panel
 
-        translate([9, 9, -1])
-            cube([80, 80, case_height]);
+        translate([9, 9, case_height-1])
+            cube([80, 80, 1]);
 
     }
 }
@@ -58,8 +58,8 @@ module panel_holders() {
                 mounting_hole_round();
         }
 
-        translate([8, 8, 0])
-            cube([82, 82, case_height]);
+        translate([8.5, 8.5, 0])
+            cube([81, 81, case_height]);
     }
 }
     
@@ -87,4 +87,34 @@ module mounting_hole_round() {
 union() {
     panel_cover();
     panel_holders();
+
+    // Hooks
+
+    translate([14, 6.5, 0])
+        cube([10, 2, case_height]);
+    translate([14, 5.5, 0])
+        cube([10,1,13]);
+    translate([14, 6, 0])
+        cylinder(h = 13, r = 1);
+
+    translate([case_width-2*outer_r-2-14, 6.5, 0])
+        cube([10, 2, case_height]);
+    translate([case_width-2*outer_r-2-14, 5.5, 0])
+        cube([10,1,13]);
+    translate([case_width-2*outer_r-2-14+10, 6, 0])
+        cylinder(h = 13, r = 1);
+
+    translate([14, 81+2+6.5, 0])
+        cube([10, 2, case_height]);
+    translate([14, 81+5+5.5, 0])
+        cube([10,1,13]);
+    translate([14, 81+5+6, 0])
+        cylinder(h = 13, r = 1);
+
+    translate([case_width-2*outer_r-2-14, 81+2+6.5, 0])
+        cube([10, 2, case_height]);
+    translate([case_width-2*outer_r-2-14, 81+5+5.5, 0])
+        cube([10,1,13]);
+    translate([case_width-2*outer_r-2-14+10, 81+5+6, 0])
+        cylinder(h = 13, r = 1);
 }
