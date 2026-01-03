@@ -30,7 +30,7 @@ usbc_h = 5;
 led_r = 5;
 
 // Grid
-grid_height = 4+case_height;
+grid_height = 5+case_height;
 
 // increase for smoother cone ($fn)
 segments = 64;
@@ -188,28 +188,58 @@ module line(
     }
 }
 
-module grid(cells = [8.5, 8.5], spacing = 1.5, wall = 0.5, height = grid_height) {
+// ========================
+// Cover for the NeoPixel panel
+// ========================
+module panel_cover() {
+    difference() {
+        translate([-0.5, -0.5, 0])
+            cube([81, 81, grid_height]);
+
+        // Field for the NeoPixel panel
+        translate([0, 0, 0])
+            cube([80, 80, grid_height]);
+
+    }
+}
+
+module grid(cell = 9.5625, wall = 0.5, height = grid_height) {
     rows = 8;
     cols = 8;
 
     // Vertical walls
-    for (i = [0:cols]) {
+    for (i = [1:cols-1]) {
         translate([
-            i * (cells[0] + spacing) - spacing/2 - wall/2,
-            -spacing/2,
+            i * cell + (i-1) * wall,
+            0,
             0
         ])
-            cube([wall, rows * (cells[1] + spacing), height]);
+            cube([wall, rows*cell+(rows-1)*wall, height]);
     }
 
     // Horizontal walls
-    for (j = [0:rows]) {
+    for (j = [1:rows-1]) {
         translate([
-            -2*wall,
-            j * (cells[1] + spacing) - spacing/2 - wall/2,
+            0,
+            j * cell + (j-1) * wall,
             0
         ])
-            cube([cols * (cells[0] + spacing)+wall, wall, height]);
+            cube([cols * cell+(cols-1)*wall, wall, height]);
+    }
+}
+
+module hook() {
+    difference() {
+        union() {
+            cube([3, 1, 5]);
+            translate([4, 0.5, 0]) {
+                cylinder(h = 5, r = 2);
+            }
+        }
+        translate([4, 0.5, 0])
+            cylinder(h = 5, r = 1);
+        translate([4.5, -0.3, 0])
+            cube([2, 1.6, 5]);
     }
 }
 
@@ -219,6 +249,23 @@ module grid(cells = [8.5, 8.5], spacing = 1.5, wall = 0.5, height = grid_height)
 
 union() {
     case_top();
-    translate([9.5, 9.5, -grid_height+case_height])
+    translate([9, 9, -grid_height+case_height]) {
+        panel_cover();
         grid();
+    }
+
+    // Hooks for the NeoPixel panel
+    translate([9.5, (case_width-80)/2-4, -5])
+        hook();
+
+    translate([9.5, 7.5+81+3, -5])
+        hook();
+
+    translate([case_width-9.5, (case_width-80)/2-4, 0])
+        rotate([0, 180, 0])
+            hook();
+
+    translate([case_width-9.5, 7.5+81+3, 0])
+        rotate([0, 180, 0])
+            hook();
 }
