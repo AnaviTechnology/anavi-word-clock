@@ -10,7 +10,7 @@ $fn = 64;              // smooth corners
 // Case
 case_width = 100;
 case_lenght = 100;
-case_height = 40;
+case_height = 50;
 
 // Outer cylinder
 outer_r = 3;
@@ -116,4 +116,13 @@ difference() {
     // USB-C connector
     translate([(case_width-usbc_l)/2, 6.5, 0])
        usbc();
+    // PCB mounting holes
+    middle = (case_width-usbc_l)/2+4;
+    translate([middle-32.5, 2, wall_thickness+2.5+3])
+        rotate([90, 0, 0])
+            cylinder(h = 2, r1 = 2, r2 = 3, center = false);
+
+    translate([middle+23.5, 2, wall_thickness+2.5+3])
+        rotate([90, 0, 0])
+            cylinder(h = 2, r1 = 2, r2 = 3, center = false);
 }
