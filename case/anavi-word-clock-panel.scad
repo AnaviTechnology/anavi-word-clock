@@ -90,31 +90,31 @@ union() {
 
     // Hooks
 
-    translate([14, 6.5, 0])
+    translate([13.5, 6.5, 0])
         cube([10, 2, case_height]);
-    translate([14, 5.5, 0])
+    translate([13.5, 5.5, 0])
         cube([10,1,13]);
-    translate([14, 6, 0])
+    translate([13.5, 6, 0])
         cylinder(h = 13, r = 1);
 
-    translate([case_width-2*outer_r-2-14, 6.5, 0])
+    translate([case_width-2*outer_r-2-13.5, 6.5, 0])
         cube([10, 2, case_height]);
-    translate([case_width-2*outer_r-2-14, 5.5, 0])
+    translate([case_width-2*outer_r-2-13.5, 5.5, 0])
         cube([10,1,13]);
-    translate([case_width-2*outer_r-2-14+10, 6, 0])
+    translate([case_width-2*outer_r-2-13.5+10, 6, 0])
         cylinder(h = 13, r = 1);
 
-    translate([14, 81+2+6.5, 0])
+    translate([13.5, 81+2+6.5, 0])
         cube([10, 2, case_height]);
-    translate([14, 81+5+5.5, 0])
+    translate([13.5, 81+5+5.5, 0])
         cube([10,1,13]);
-    translate([14, 81+5+6, 0])
+    translate([13.5, 81+5+6, 0])
         cylinder(h = 13, r = 1);
 
-    translate([case_width-2*outer_r-2-14, 81+2+6.5, 0])
+    translate([case_width-2*outer_r-2-13.5, 81+2+6.5, 0])
         cube([10, 2, case_height]);
-    translate([case_width-2*outer_r-2-14, 81+5+5.5, 0])
+    translate([case_width-2*outer_r-2-13.5, 81+5+5.5, 0])
         cube([10,1,13]);
-    translate([case_width-2*outer_r-2-14+10, 81+5+6, 0])
+    translate([case_width-2*outer_r-2-13.5+10, 81+5+6, 0])
         cylinder(h = 13, r = 1);
 }
