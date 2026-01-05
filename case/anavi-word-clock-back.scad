@@ -118,11 +118,11 @@ difference() {
        usbc();
     // PCB mounting holes
     middle = (case_width-usbc_l)/2+4;
-    translate([middle-32.5, 2, wall_thickness+2.5+3])
+    translate([middle-32.5, 2, wall_thickness+2.5+2])
         rotate([90, 0, 0])
             cylinder(h = 2, r1 = 2, r2 = 3, center = false);
 
-    translate([middle+23.5, 2, wall_thickness+2.5+3])
+    translate([middle+23.5, 2, wall_thickness+2.5+2])
         rotate([90, 0, 0])
             cylinder(h = 2, r1 = 2, r2 = 3, center = false);
 }
