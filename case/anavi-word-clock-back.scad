@@ -10,7 +10,7 @@ $fn = 64;              // smooth corners
 // Case
 case_width = 100;
 case_lenght = 100;
-case_height = 50;
+case_height = 55;
 
 // Outer cylinder
 outer_r = 3;
