@@ -5,7 +5,7 @@
 // Case (2 mm shorter than the bottom, aka 1 mm on each side)
 case_width = 98;
 case_lenght = 98;
-case_height = 5;
+case_height = 6.5;
 
 // Outer cylinder
 outer_r = 4;
@@ -77,28 +77,46 @@ module mounting_hole_round() {
     }
 }
 
-module grid(cell = 9.5625, wall = 0.5, height = case_height) {
+module grid(cell = 9.5625, wall = 0.5, height = case_height, diffuser = true) {
     rows = 8;
     cols = 8;
 
-    // Vertical walls
-    for (i = [1:cols-1]) {
-        translate([
-            i * cell + (i-1) * wall,
-            0,
-            0
-        ])
-            cube([wall, rows*cell+(rows-1)*wall, height]);
-    }
+    if (false == diffuser) {
+        // Vertical walls
+        for (i = [1:cols-1]) {
+            translate([
+                i * cell + (i-1) * wall,
+                0,
+                0
+            ])
+                color("black")
+                    cube([wall, rows*cell+(rows-1)*wall, height]);
+        }
 
-    // Horizontal walls
-    for (j = [1:rows-1]) {
-        translate([
-            0,
-            j * cell + (j-1) * wall,
-            0
-        ])
-            cube([cols * cell+(cols-1)*wall, wall, height-1]);
+        // Horizontal walls
+        for (j = [1:rows-1]) {
+            translate([
+                0,
+                j * cell + (j-1) * wall,
+                0
+            ])
+                color("black")
+                    cube([cols * cell+(cols-1)*wall, wall, height-1]);
+        }
+    }
+    else if (true == diffuser) {
+        // White cubes inside each cell, height = 1
+        color("white")
+        for (i = [0:cols-1]) {
+            for (j = [0:rows-1]) {
+                translate([
+                    i * (cell + wall),
+                    j * (cell + wall),
+                    0
+                ])
+                    cube([cell, cell, 0.5]);
+            }
+        }
     }
 }
 
@@ -107,8 +125,7 @@ module grid(cell = 9.5625, wall = 0.5, height = case_height) {
 // ========================
 
 union() {
-    panel_cover();
     translate([9, 9, 0])
-        grid();
-    panel_holders();
+            //grid();
+            grid(cell = 9.5625, wall = 0.5, height = case_height-0.5, diffuser = false);
 }
