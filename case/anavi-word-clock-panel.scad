@@ -14,6 +14,9 @@ outer_h = case_height;
 hole_r = 2;
 hole_h = case_height;
 
+// Hook's height
+hook_h = 8;
+
 // increase for smoother cone ($fn)
 segments = 64;
 
@@ -90,31 +93,31 @@ union() {
 
     // Hooks
 
-    translate([13.5, 6.5, 0])
-        cube([10, 2, case_height]);
+    translate([12.5, 6.5, 0])
+        cube([11, 2, case_height]);
     translate([13.5, 5.5, 0])
-        cube([10,1,13]);
+        cube([10,1,hook_h]);
     translate([13.5, 6, 0])
-        cylinder(h = 13, r = 1);
+        cylinder(h = hook_h, r = 1);
 
     translate([case_width-2*outer_r-2-13.5, 6.5, 0])
-        cube([10, 2, case_height]);
+        cube([11, 2, case_height]);
     translate([case_width-2*outer_r-2-13.5, 5.5, 0])
-        cube([10,1,13]);
+        cube([10,1,hook_h]);
     translate([case_width-2*outer_r-2-13.5+10, 6, 0])
-        cylinder(h = 13, r = 1);
+        cylinder(h = hook_h, r = 1);
 
-    translate([13.5, 81+2+6.5, 0])
-        cube([10, 2, case_height]);
+    translate([12.5, 81+2+6.5, 0])
+        cube([11, 2, case_height]);
     translate([13.5, 81+5+5.5, 0])
-        cube([10,1,13]);
+        cube([10,1,hook_h]);
     translate([13.5, 81+5+6, 0])
-        cylinder(h = 13, r = 1);
+        cylinder(h = hook_h, r = 1);
 
     translate([case_width-2*outer_r-2-13.5, 81+2+6.5, 0])
-        cube([10, 2, case_height]);
+        cube([11, 2, case_height]);
     translate([case_width-2*outer_r-2-13.5, 81+5+5.5, 0])
-        cube([10,1,13]);
+        cube([10,1,hook_h]);
     translate([case_width-2*outer_r-2-13.5+10, 81+5+6, 0])
-        cylinder(h = 13, r = 1);
+        cylinder(h = hook_h, r = 1);
 }
