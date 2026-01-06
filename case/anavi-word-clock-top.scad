@@ -251,7 +251,6 @@ union() {
     case_top();
     translate([9, 9, -grid_height+case_height]) {
         panel_cover();
-        grid();
     }
 
     // Hooks for the NeoPixel panel
