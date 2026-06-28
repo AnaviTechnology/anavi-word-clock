@@ -114,7 +114,7 @@ module grid(cell = 9.5625, wall = 0.5, height = case_height, diffuser = true) {
                     j * (cell + wall),
                     0
                 ])
-                    cube([cell, cell, 0.5]);
+                    cube([cell, cell, 1]);
             }
         }
     }
