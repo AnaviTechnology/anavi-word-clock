@@ -4,4 +4,5 @@
 	(lib (name "logo") (type "KiCad") (uri "${KIPRJMOD}/lib/logo.pretty") (options "") (descr ""))
 	(lib (name "SOT95P280X145-5N") (type "KiCad") (uri "${KIPRJMOD}/lib/74LVC1G17W5-7/SOT95P280X145-5N.pretty") (options "") (descr ""))
 	(lib (name "TL1105SF160Q") (type "KiCad") (uri "${KIPRJMOD}/lib/TL1105SF160Q/footprints.pretty") (options "") (descr ""))
+	(lib (name "xiao-esp32c6") (type "KiCad") (uri "${KIPRJMOD}/lib/xiao-esp32c6") (options "") (descr ""))
 )

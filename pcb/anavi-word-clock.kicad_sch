@@ -5890,7 +5890,7 @@
 				)
 			)
 		)
-		(property "Value" "MOUDLE-SEEEDUINO-XIAO-ESP32C3"
+		(property "Value" "XIAO ESP32C6"
 			(at 126.365 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5900,7 +5900,7 @@
 				)
 			)
 		)
-		(property "Footprint" "xiao ESP32C3_PCB:MOUDLE14P-SMD-2.54-21X17.8MM"
+		(property "Footprint" "xiao-esp32c6:XIAO-ESP32-C6-SMD"
 			(at 127 76.2 0)
 			(hide yes)
 			(show_name no)
