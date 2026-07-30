@@ -1,16 +1,19 @@
 // ========================
 // Parameters
 // ========================
-corner_r = 5;    // PCB corner radius
+// Corner radius
+corner_r = 5;
 
-wall_thickness = 2;  // Wall thickness
-$fn = 64;              // smooth corners
+// Wall thickness
+wall_thickness = 2;
+// smooth corners
+$fn = 64;
 
 
 // Case
 case_width = 100;
 case_lenght = 100;
-case_height = 45;
+case_height = 33;
 
 // Outer cylinder
 outer_r = 3;
@@ -114,15 +117,15 @@ difference() {
     // Main part of the case
     case_top();  
     // USB-C connector
-    translate([(case_width-usbc_l)/2, 6.5, 0])
+    translate([(case_width-usbc_l)/2+12, 6.5, 0])
        usbc();
     // PCB mounting holes
     middle = (case_width-usbc_l)/2+4;
-    translate([middle-32.5, 2, wall_thickness+2.5+2])
+    translate([middle-12.5, 2, wall_thickness+2.5+2+8])
         rotate([90, 0, 0])
             cylinder(h = 2, r1 = 2, r2 = 3, center = false);
 
-    translate([middle+23.5, 2, wall_thickness+2.5+2])
+    translate([middle+31.5, 2, wall_thickness+2.5+2])
         rotate([90, 0, 0])
             cylinder(h = 2, r1 = 2, r2 = 3, center = false);
 }
