@@ -25,7 +25,7 @@ hole_h = 2;
 
 // USB-C connector
 usbc_l = 10;
-usbc_h = 5;
+usbc_h = 4;
 
 // LED
 led_r = 5;
@@ -78,6 +78,19 @@ module case_top() {
                 cylinder(wall_thickness, hole_r, hole_h, center = false, $fn = segments);
         }
     }
+    
+    // Covel bottom holders
+    translate([12+8-2, 2, wall_thickness])
+        cube([12, 2, 2]);
+    translate([12+24-2, 2, wall_thickness])
+        cube([12, 2, 2]);
+
+    // PCB stand
+    middle = (case_width-usbc_l)/2+4;
+    translate([middle-9.5-2, 2, wall_thickness])
+        cube([4, 2, 10]);
+    translate([middle+34.50-6, 2, wall_thickness])
+        cube([4, 2, 23]);
 }
 
 // ========================
@@ -109,23 +122,71 @@ module usbc() {
         rounded_rect(usbc_l,usbc_h,1);
 }
 
+module ramp_screw() {
+    rotate([90, 0, 270])
+    linear_extrude(height = 8)
+        polygon([
+            [0, 0],
+            [4, 0],
+            [4, 1]
+        ]);
+}
+
+module ramp() {
+    rotate([270, 0, 90])
+    linear_extrude(height = 8)
+        polygon([
+            [0, 0],
+            [3, 0],
+            [3, 3]
+        ]);
+}
+
 // ========================
 // Top case
 // ========================
 
 difference() {
-    // Main part of the case
-    case_top();  
-    // USB-C connector
-    translate([(case_width-usbc_l)/2+12, 6.5, 0])
-       usbc();
-    // PCB mounting holes
-    middle = (case_width-usbc_l)/2+4;
-    translate([middle-12.5, 2, wall_thickness+2.5+2+8])
-        rotate([90, 0, 0])
-            cylinder(h = 2, r1 = 2, r2 = 3, center = false);
+    union() {
+        difference() {
+            // Main part of the case
+            case_top();
+            // USB-C connector
+            translate([(case_width-usbc_l)/2+15, 7, 0])
+               usbc();
+            // PCB mounting holes
+            middle = (case_width-usbc_l)/2+4;
+            translate([middle-9.5, 2, wall_thickness+2.5+2+8])
+                rotate([90, 0, 0])
+                    cylinder(h = 2, r1 = 2, r2 = 3, center = false);
 
-    translate([middle+31.5, 2, wall_thickness+2.5+2])
-        rotate([90, 0, 0])
-            cylinder(h = 2, r1 = 2, r2 = 3, center = false);
+            translate([middle+34.5, 2, wall_thickness+2.5+2])
+                rotate([90, 0, 0])
+                    cylinder(h = 2, r1 = 2, r2 = 3, center = false);
+            
+            // Cover for the RTC module
+            translate([12, 4, 0])
+                cube([40, 60, 2]);
+            translate([12+40/2,65,0])
+                cylinder(h = 1, d = 15, $fn = segments);
+            
+            translate([12+16, 1, 3])
+                ramp();
+            translate([12+32, 1, 3])
+                ramp();
+        }
+        
+        // Holder for the cover's nut
+        difference() {
+            translate([8+40/2,61,1])
+                cube([8, 8, 4]);
+            translate([12+40/2+4,65,1])
+                ramp_screw();
+        }
+    }
+    
+    // Cover's mounting hole
+    translate([12+40/2,65,1])
+        cylinder(4, 2.5, 2.5, center = false, $fn = segments);
+
 }
