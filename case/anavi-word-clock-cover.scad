@@ -28,9 +28,15 @@ difference() {
             ramp();
     }
 
-    translate([40/2,60,0])
+    // Opening for the screw
+    translate([40/2,61,0])
         cylinder(2, hole_h, hole_r, center = false, $fn = segments);
 
+    // Opening for the reset button
     translate([3,5,0])
         cylinder(2, 1, 1, center = false, $fn = segments);
+
+    // LED
+    translate([8,5,0])
+        cylinder(2, 3, 3, center = false, $fn = segments);
 }
