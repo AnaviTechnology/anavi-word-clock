@@ -177,12 +177,8 @@ difference() {
         }
         
         // Holder for the cover's nut
-        difference() {
-            translate([8+40/2,61,1])
-                cube([8, 8, 4]);
-            translate([12+40/2+4,65,1])
-                ramp_screw();
-        }
+        translate([8+40/2,61,1])
+            cube([8, 8, 4]);
     }
     
     // Cover's mounting hole
