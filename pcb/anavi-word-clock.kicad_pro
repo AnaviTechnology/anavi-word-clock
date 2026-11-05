@@ -185,6 +185,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -196,6 +197,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -207,6 +209,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -497,6 +500,7 @@
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
+      "same_local_global_power": "warning",
       "similar_label_and_power": "warning",
       "similar_labels": "warning",
       "similar_power": "warning",
@@ -580,8 +584,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": null,
-    "netclass_assignments": null,
+    "net_colors": {},
+    "netclass_assignments": {},
     "netclass_patterns": []
   },
   "pcbnew": {
@@ -589,7 +593,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "plots/anavi-word-clock-10/",
+      "plot": "plots/anavi-word-clock-11/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -721,7 +725,7 @@
         "uuid": "2ff006f4-2a61-440d-9643-0ab2f7506f70"
       }
     ],
-    "used_designators": "D1,U3,#PWR1-13,#FLG1-4,J1",
+    "used_designators": "#FLG1-4,#PWR1-13,D1,J1,U3",
     "variants": []
   },
   "sheets": [
